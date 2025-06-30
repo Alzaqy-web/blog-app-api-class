@@ -3,6 +3,7 @@ import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.middlwares";
 import { PORT } from "./config/env";
 import { SampleRouter } from "./modules/sample/sample.router";
+import { UserRouter } from "./modules/user/user.router";
 
 export class App {
   app: Express;
@@ -24,8 +25,10 @@ export class App {
   // 2.routes()
   private routes() {
     const sampleRouter = new SampleRouter();
+    const userRouter = new UserRouter();
 
     this.app.use("/samples", sampleRouter.getRouter());
+    this.app.use("/users", userRouter.getRouter());
   }
 
   //

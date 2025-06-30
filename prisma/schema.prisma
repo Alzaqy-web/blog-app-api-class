@@ -10,10 +10,22 @@ datasource db {
 }
 
 model Sample {
-  id       Int      @id @default(autoincrement())
-  name     String
-  creatAt  DateTime @default(now())
-  updateAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 
   @@map("samples")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String?
+  profilePic String
+  createdAt  DateTime @default(now())
+  updateAt   DateTime @updatedAt
+
+  @@map("users")
 }

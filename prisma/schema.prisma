@@ -22,10 +22,16 @@ model User {
   id         Int      @id @default(autoincrement())
   name       String
   email      String   @unique
-  password   String?
-  profilePic String
+  password   String
+  role       Role     @default(USER)
+  profilePic String?
   createdAt  DateTime @default(now())
   updateAt   DateTime @updatedAt
 
   @@map("users")
+}
+
+enum Role {
+  ADMIN
+  USER
 }
